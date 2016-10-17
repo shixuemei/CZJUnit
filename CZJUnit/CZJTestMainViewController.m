@@ -13,9 +13,11 @@
 #import "CZJTesting.h"
 #import "CZJTestTableViewDataSource.h"
 #import "CZJTestSuite.h"
+#import "CZJTestRunner.h"
 
-@interface CZJTestMainViewController () <UITableViewDelegate> {
+@interface CZJTestMainViewController () <UITableViewDelegate, CZJTestDisplayDelegate> {
     UIBarButtonItem *_testCtrlButton;
+    UIBarButtonItem *_testMarkButton;
     CZJTestMainView *_mainView;
 }
 
@@ -34,13 +36,16 @@
     
     _mainView.tableView.delegate = self;
     _mainView.tableView.dataSource = self.dataSource;
+    _mainView.tableView.allowsMultipleSelection = YES;
     
     _testCtrlButton = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStylePlain target:self action:@selector(toggleCtrlButton)];
-    self.navigationItem.rightBarButtonItem = _testCtrlButton;
+    _testMarkButton = [[UIBarButtonItem alloc] initWithTitle:@"Mark" style:UIBarButtonItemStylePlain target:self action:@selector(toggleMarkButton)];
+    self.navigationItem.rightBarButtonItems = @[_testCtrlButton, _testMarkButton];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
     self.navigationController.hidesBarsOnSwipe = NO;
 }
 
@@ -51,7 +56,8 @@
 
 - (CZJTestTableViewDataSource *)dataSource {
     if (!_dataSource) {
-        _dataSource = [[CZJTestTableViewDataSource alloc] initWithIdentifier:@"Tests" suite:[CZJTestSuite suiteFromEnv]];
+        _dataSource = [[CZJTestTableViewDataSource alloc] initWithIdentifier:@"Tests"
+                                                                       suite:[CZJTestSuite suiteFromEnv]];
         [_dataSource loadDefaults];
     }
     
@@ -61,20 +67,55 @@
 #pragma mark - UITabelViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!_mainView.tableView.isEditing) {
+        CZJTestNode *testNode = [self.dataSource nodeForIndexPath:indexPath];
+        
+        CZJTestViewController *testVC = [[CZJTestViewController alloc] init];
+        [testVC setTest:testNode.test];
+        
+        [self.navigationController pushViewController:testVC animated:YES];
+        [_mainView.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+}
+
+#pragma mark - CZJTestDisplayDelegate
+
+- (void)willDisplayTest:(id<CZJTest>)test {
     CZJTestViewController *testVC = [[CZJTestViewController alloc] init];
-    
-    CZJTestNode *sectionNode = _dataSource.root.children[indexPath.section];
-    CZJTestNode *testNode = sectionNode.children[indexPath.row];
-    [testVC setTest:testNode.test];
+    [testVC setTest:test];
     
     [self.navigationController pushViewController:testVC animated:YES];
-    [_mainView.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)didDisplayTest:(id<CZJTest>)test {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Private methods
 
 - (void)toggleCtrlButton {
-    
+    if (_mainView.tableView.isEditing) {
+        NSArray *indexPaths = _mainView.tableView.indexPathsForSelectedRows;
+        for (NSIndexPath *indexPath in indexPaths) {
+            CZJTestNode *node = [self.dataSource nodeForIndexPath:indexPath];
+            [[CZJTestRunner sharedRunner] runTest:node.test
+                                      withOptions:CZJTestOptionNone
+                                      inDisplayer:self];
+        }
+    } else {
+        [[CZJTestRunner sharedRunner] runTest:self.dataSource.root.test
+                                  withOptions:CZJTestOptionNone
+                                  inDisplayer:self];
+    }
+}
+
+- (void)toggleMarkButton {
+    _mainView.tableView.editing = !_mainView.tableView.isEditing;
+    _testMarkButton.title = _mainView.tableView.isEditing ? @"Done" : @"Mark";
 }
 
 @end

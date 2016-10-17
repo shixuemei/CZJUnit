@@ -21,6 +21,7 @@ typedef NS_OPTIONS(NSInteger, CZJTestOptions) {
     CZJTestOptionReraiseExceptions =        1 << 0,     // Allows exceptions to be raised (so you can trigger the debugger)
     CZJTestOptionForceSetUpTearDownClass =  1 << 1,     // Runs setUpClass/tearDownClass for this (each) test,
                                                         //   used when re-running a single test in a group
+    CZJTestOptionNone =                     0x0
 };
 
 /*!
@@ -48,8 +49,6 @@ typedef struct {
 @property (nonatomic, assign) CZJTestStatus status;
 
 @property (nonatomic, readonly) CZJTestStats stats;
-
-- (void)run:(CZJTestOptions)options;
 
 @end
 

@@ -19,12 +19,6 @@
     NSMutableDictionary *_defaults;
 }
 
-//@property (nonatomic, copy) NSString *identifier;
-//@property (nonatomic, strong) CZJTestSuite *suite;
-//@property (nonatomic, strong) CZJTestNode *root;
-//@property (nonatomic, strong) NSMutableDictionary *map;
-//@property (nonatomic, strong) NSMutableDictionary *defaults;
-
 @end
 
 @implementation CZJTestViewModel

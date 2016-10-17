@@ -53,39 +53,6 @@ static NSString *kNSCodingKey_identifier = @"identifier";
 
 #pragma mark - Protocol CZJTest
 
-- (void)run:(CZJTestOptions)options {
-    if (_status == CZJTestStatusCancelled) {
-        return;
-    }
-    
-    if ((options & CZJTestOptionForceSetUpTearDownClass) == CZJTestOptionForceSetUpTearDownClass) {
-        [self setUp];
-        if (_status == CZJTestStatusErrored) {
-            return;
-        }
-    }
-    
-    _status = CZJTestStatusRunning;
-    
-//    [_delegate testDidStart:self source:self];
-    
-    BOOL reraiseExceptions = ((options & CZJTestOptionReraiseExceptions) == CZJTestOptionReraiseExceptions);
-    NSException *exception = nil;
-    [CZJTesting runTestWithTarget:_target selector:_selector exception:&exception interval:nil reraiseExceptions:reraiseExceptions];
-    
-    if (_status == CZJTestStatusCancelling) {
-        _status = CZJTestStatusCancelled;
-    } else if (_status == CZJTestStatusRunning) {
-        _status = CZJTestStatusSucceeded;
-    }
-    
-    if ((options & CZJTestOptionForceSetUpTearDownClass) == CZJTestOptionForceSetUpTearDownClass) {
-        [self tearDown];
-    }
-    
-//    [_delegate testDidEnd:self source:self];
-}
-
 - (CZJTestStats)stats {
     switch (_status) {
         case CZJTestStatusSucceeded:
@@ -116,7 +83,8 @@ static NSString *kNSCodingKey_identifier = @"identifier";
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    CZJTest *test = [self initWithIdentifier:[aDecoder decodeObjectForKey:kNSCodingKey_identifier] name:nil];
+    CZJTest *test = [self initWithIdentifier:[aDecoder decodeObjectForKey:kNSCodingKey_identifier]
+                                        name:nil];
     
     return test;
 }

@@ -160,29 +160,26 @@ static CZJTesting *_sharedInstance = nil;
                 exception:(NSException *__autoreleasing *)exception
                  interval:(NSTimeInterval *)interval
         reraiseExceptions:(BOOL)reraiseExceptions {
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 #pragma clang diagnostic push
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            if ([target respondsToSelector:@selector(setUp)]) {
-                [target performSelector:@selector(setUp)];
-            }
-            
-            if ([target respondsToSelector:@selector(setCurrentSelector:)]) {
-                [target setCurrentSelector:selector];
-            }
-        });
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        if ([target respondsToSelector:@selector(setUp)]) {
+            [target performSelector:@selector(setUp)];
+        }
+        
+        if ([target respondsToSelector:@selector(setCurrentSelector:)]) {
+            [target setCurrentSelector:selector];
+        }
+    });
 
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [target performSelector:selector];
-        
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            if ([target respondsToSelector:@selector(tearDown)]) {
-                [target performSelector:@selector(tearDown)];
-            }
-        });
-#pragma clang diagnostic pop
+    [target performSelector:selector];
+    
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        if ([target respondsToSelector:@selector(tearDown)]) {
+            [target performSelector:@selector(tearDown)];
+        }
     });
+#pragma clang diagnostic pop
     
     NSException *testException = nil;
 //#pragma clang diagnostic push

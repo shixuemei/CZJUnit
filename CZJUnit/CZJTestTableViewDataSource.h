@@ -13,4 +13,10 @@
 
 @interface CZJTestTableViewDataSource : CZJTestViewModel <UITableViewDataSource>
 
+- (CZJTestNode *)nodeForIndexPath:(NSIndexPath *)indexPath;
+
+- (NSArray<CZJTestNode *> *)nodesForIndexPaths:(NSArray<NSIndexPath *> *)indexPaths;
+
+- (CZJTestNode *)nodeWithChildrenAnIndexpaths:(NSArray<NSIndexPath *> *)indexPaths;
+
 @end

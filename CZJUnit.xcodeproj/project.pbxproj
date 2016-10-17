@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		818AA4FE2E0F31DE627C931E /* Pods_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA8293DFD2BDCC180304BC65 /* Pods_Example.framework */; };
+		470C790B1DB2620800DF5BEE /* CZJTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C790A1DB2620800DF5BEE /* CZJTestRunner.m */; };
+		47D912931DB37D5A00366357 /* TestCase1.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D912921DB37D5A00366357 /* TestCase1.m */; };
+		47D912951DB384BA00366357 /* TestCase2.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D912941DB384BA00366357 /* TestCase2.m */; };
 		B166BC5B1D9BC88C00DDD2F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B166BC5A1D9BC88C00DDD2F2 /* main.m */; };
 		B166BC661D9BC88C00DDD2F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B166BC651D9BC88C00DDD2F2 /* Assets.xcassets */; };
 		B166BC691D9BC88C00DDD2F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B166BC671D9BC88C00DDD2F2 /* LaunchScreen.storyboard */; };
@@ -24,54 +26,14 @@
 		B1A041B11DA5562600BECAC6 /* CZJTestTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A041B01DA5562600BECAC6 /* CZJTestTableViewDataSource.m */; };
 		B1A041B41DA5598700BECAC6 /* CZJTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A041B31DA5598700BECAC6 /* CZJTestSuite.m */; };
 		B1B0A9121D9CF86E00B5BA81 /* CZJTestNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B0A9111D9CF86E00B5BA81 /* CZJTestNode.m */; };
-		B1E2650F1DA8D87700C61381 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E2650E1DA8D87700C61381 /* main.m */; };
-		B1E265121DA8D87700C61381 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E265111DA8D87700C61381 /* AppDelegate.m */; };
-		B1E265151DA8D87700C61381 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E265141DA8D87700C61381 /* ViewController.m */; };
-		B1E265181DA8D87700C61381 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1E265161DA8D87700C61381 /* Main.storyboard */; };
-		B1E2651A1DA8D87700C61381 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1E265191DA8D87700C61381 /* Assets.xcassets */; };
-		B1E2651D1DA8D87700C61381 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1E2651B1DA8D87700C61381 /* LaunchScreen.storyboard */; };
-		B1E265241DA8D8EB00C61381 /* TestCase1.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E265221DA8D8EB00C61381 /* TestCase1.m */; };
-		B1E265251DA8D8EB00C61381 /* TestCase2.m in Sources */ = {isa = PBXBuildFile; fileRef = B1E265231DA8D8EB00C61381 /* TestCase2.m */; };
-		B1E265281DA8D92E00C61381 /* CZJTest.h in Sources */ = {isa = PBXBuildFile; fileRef = B166BC711D9BC8CA00DDD2F2 /* CZJTest.h */; };
-		B1E265291DA8D94000C61381 /* CZJTestCase.h in Sources */ = {isa = PBXBuildFile; fileRef = B166BC751D9BC8CA00DDD2F2 /* CZJTestCase.h */; };
-		B1E2652A1DA8D94E00C61381 /* CZJTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B166BC721D9BC8CA00DDD2F2 /* CZJTest.m */; };
-		B1E2652B1DA8D94E00C61381 /* CZJTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = B166BC761D9BC8CA00DDD2F2 /* CZJTestCase.m */; };
-		B1E2652C1DA8D9B400C61381 /* CZJTestAppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = B166BC731D9BC8CA00DDD2F2 /* CZJTestAppDelegate.h */; };
-		B1E2652D1DA8D9B400C61381 /* CZJTestAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B166BC741D9BC8CA00DDD2F2 /* CZJTestAppDelegate.m */; };
-		B1E2652E1DA8D9CD00C61381 /* CZJTest-Prefix.pch in Sources */ = {isa = PBXBuildFile; fileRef = B166BC701D9BC8CA00DDD2F2 /* CZJTest-Prefix.pch */; };
-		B1E2652F1DA8D9CD00C61381 /* CZJTesting.h in Sources */ = {isa = PBXBuildFile; fileRef = B166BC791D9BC8CA00DDD2F2 /* CZJTesting.h */; };
-		B1E265301DA8D9CD00C61381 /* CZJTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = B166BC7A1D9BC8CA00DDD2F2 /* CZJTesting.m */; };
-		B1E265311DA8D9CD00C61381 /* CZJTestNode.h in Sources */ = {isa = PBXBuildFile; fileRef = B1B0A9101D9CF86E00B5BA81 /* CZJTestNode.h */; };
-		B1E265321DA8D9CD00C61381 /* CZJTestNode.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B0A9111D9CF86E00B5BA81 /* CZJTestNode.m */; };
-		B1E265331DA8D9CD00C61381 /* CZJTestGroup.h in Sources */ = {isa = PBXBuildFile; fileRef = B171C3B71D9D1F2300C3F656 /* CZJTestGroup.h */; };
-		B1E265341DA8D9CD00C61381 /* CZJTestGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = B171C3B81D9D1F2300C3F656 /* CZJTestGroup.m */; };
-		B1E265351DA8D9CD00C61381 /* CZJTestCaseCell.h in Sources */ = {isa = PBXBuildFile; fileRef = B166BC771D9BC8CA00DDD2F2 /* CZJTestCaseCell.h */; };
-		B1E265361DA8D9CD00C61381 /* CZJTestCaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B166BC781D9BC8CA00DDD2F2 /* CZJTestCaseCell.m */; };
-		B1E265371DA8D9CD00C61381 /* CZJTestViewModel.h in Sources */ = {isa = PBXBuildFile; fileRef = B171C3B41D9D106C00C3F656 /* CZJTestViewModel.h */; };
-		B1E265381DA8D9CD00C61381 /* CZJTestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B171C3B51D9D106C00C3F656 /* CZJTestViewModel.m */; };
-		B1E265391DA8D9CD00C61381 /* CZJTestViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = B166BC7F1D9BC8CA00DDD2F2 /* CZJTestViewController.h */; };
-		B1E2653A1DA8D9CD00C61381 /* CZJTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B166BC801D9BC8CA00DDD2F2 /* CZJTestViewController.m */; };
-		B1E2653B1DA8D9CD00C61381 /* CZJTestMainView.h in Sources */ = {isa = PBXBuildFile; fileRef = B166BC7B1D9BC8CA00DDD2F2 /* CZJTestMainView.h */; };
-		B1E2653C1DA8D9CD00C61381 /* CZJTestMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = B166BC7C1D9BC8CA00DDD2F2 /* CZJTestMainView.m */; };
-		B1E2653D1DA8D9CD00C61381 /* CZJTestMainViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = B166BC7D1D9BC8CA00DDD2F2 /* CZJTestMainViewController.h */; };
-		B1E2653E1DA8D9CD00C61381 /* CZJTestMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B166BC7E1D9BC8CA00DDD2F2 /* CZJTestMainViewController.m */; };
-		B1E2653F1DA8D9CD00C61381 /* CZJTestTableViewDataSource.h in Sources */ = {isa = PBXBuildFile; fileRef = B1A041AF1DA5562600BECAC6 /* CZJTestTableViewDataSource.h */; };
-		B1E265401DA8D9CD00C61381 /* CZJTestTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A041B01DA5562600BECAC6 /* CZJTestTableViewDataSource.m */; };
-		B1E265411DA8D9CD00C61381 /* CZJTestSuite.h in Sources */ = {isa = PBXBuildFile; fileRef = B1A041B21DA5598700BECAC6 /* CZJTestSuite.h */; };
-		B1E265421DA8D9CD00C61381 /* CZJTestSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = B1A041B31DA5598700BECAC6 /* CZJTestSuite.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B1E265261DA8D8FC00C61381 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B166BC4E1D9BC88C00DDD2F2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B166BC551D9BC88C00DDD2F2;
-			remoteInfo = CZJUnit;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
+		470C79091DB2620800DF5BEE /* CZJTestRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJTestRunner.h; sourceTree = "<group>"; };
+		470C790A1DB2620800DF5BEE /* CZJTestRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJTestRunner.m; sourceTree = "<group>"; };
+		47D912921DB37D5A00366357 /* TestCase1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCase1.m; sourceTree = "<group>"; };
+		47D912941DB384BA00366357 /* TestCase2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCase2.m; sourceTree = "<group>"; };
+		47D912961DB388F200366357 /* Test-Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Test-Macros.h"; sourceTree = "<group>"; };
 		9F25E718A3726365DE443E33 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		AAA80A503A7D692DE89A4ED3 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B166BC561D9BC88C00DDD2F2 /* CZJUnit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CZJUnit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,18 +68,6 @@
 		B1A041B31DA5598700BECAC6 /* CZJTestSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJTestSuite.m; sourceTree = "<group>"; };
 		B1B0A9101D9CF86E00B5BA81 /* CZJTestNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJTestNode.h; sourceTree = "<group>"; };
 		B1B0A9111D9CF86E00B5BA81 /* CZJTestNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJTestNode.m; sourceTree = "<group>"; };
-		B1E2650B1DA8D87700C61381 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1E2650E1DA8D87700C61381 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B1E265101DA8D87700C61381 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		B1E265111DA8D87700C61381 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B1E265131DA8D87700C61381 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B1E265141DA8D87700C61381 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		B1E265171DA8D87700C61381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B1E265191DA8D87700C61381 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B1E2651C1DA8D87700C61381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B1E2651E1DA8D87700C61381 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1E265221DA8D8EB00C61381 /* TestCase1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCase1.m; sourceTree = "<group>"; };
-		B1E265231DA8D8EB00C61381 /* TestCase2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCase2.m; sourceTree = "<group>"; };
 		BA8293DFD2BDCC180304BC65 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C607120C1CC86939232CE261 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Example/Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FC6206623DD9DCDDD32DF048 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Example/Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -131,17 +81,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1E265081DA8D87700C61381 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				818AA4FE2E0F31DE627C931E /* Pods_Example.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47D912901DB37D3C00366357 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				47D912921DB37D5A00366357 /* TestCase1.m */,
+				47D912941DB384BA00366357 /* TestCase2.m */,
+				47D912961DB388F200366357 /* Test-Macros.h */,
+			);
+			name = Examples;
+			sourceTree = "<group>";
+		};
 		8148317F52CF5C1F24CB2A0E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,8 +108,8 @@
 		B166BC4D1D9BC88C00DDD2F2 = {
 			isa = PBXGroup;
 			children = (
+				47D912901DB37D3C00366357 /* Examples */,
 				B166BC581D9BC88C00DDD2F2 /* CZJUnit */,
-				B1E2650C1DA8D87700C61381 /* Example */,
 				B166BC571D9BC88C00DDD2F2 /* Products */,
 				8148317F52CF5C1F24CB2A0E /* Pods */,
 				B779437B6B0D809A06C1FBFF /* Frameworks */,
@@ -168,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				B166BC561D9BC88C00DDD2F2 /* CZJUnit.app */,
-				B1E2650B1DA8D87700C61381 /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -203,6 +154,8 @@
 				B1A041B01DA5562600BECAC6 /* CZJTestTableViewDataSource.m */,
 				B1A041B21DA5598700BECAC6 /* CZJTestSuite.h */,
 				B1A041B31DA5598700BECAC6 /* CZJTestSuite.m */,
+				470C79091DB2620800DF5BEE /* CZJTestRunner.h */,
+				470C790A1DB2620800DF5BEE /* CZJTestRunner.m */,
 				B166BC591D9BC88C00DDD2F2 /* Supporting Files */,
 			);
 			path = CZJUnit;
@@ -217,40 +170,6 @@
 				B166BC5A1D9BC88C00DDD2F2 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B1E2650C1DA8D87700C61381 /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				B1E265431DA8DB4B00C61381 /* TestCases */,
-				B1E265101DA8D87700C61381 /* AppDelegate.h */,
-				B1E265111DA8D87700C61381 /* AppDelegate.m */,
-				B1E265131DA8D87700C61381 /* ViewController.h */,
-				B1E265141DA8D87700C61381 /* ViewController.m */,
-				B1E265161DA8D87700C61381 /* Main.storyboard */,
-				B1E265191DA8D87700C61381 /* Assets.xcassets */,
-				B1E2651B1DA8D87700C61381 /* LaunchScreen.storyboard */,
-				B1E2651E1DA8D87700C61381 /* Info.plist */,
-				B1E2650D1DA8D87700C61381 /* Supporting Files */,
-			);
-			path = Example;
-			sourceTree = "<group>";
-		};
-		B1E2650D1DA8D87700C61381 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B1E2650E1DA8D87700C61381 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B1E265431DA8DB4B00C61381 /* TestCases */ = {
-			isa = PBXGroup;
-			children = (
-				B1E265221DA8D8EB00C61381 /* TestCase1.m */,
-				B1E265231DA8D8EB00C61381 /* TestCase2.m */,
-			);
-			name = TestCases;
 			sourceTree = "<group>";
 		};
 		B779437B6B0D809A06C1FBFF /* Frameworks */ = {
@@ -281,27 +200,6 @@
 			productReference = B166BC561D9BC88C00DDD2F2 /* CZJUnit.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B1E2650A1DA8D87700C61381 /* Example */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B1E2651F1DA8D87700C61381 /* Build configuration list for PBXNativeTarget "Example" */;
-			buildPhases = (
-				D793FDBC46295632B3B304A0 /* [CP] Check Pods Manifest.lock */,
-				B1E265071DA8D87700C61381 /* Sources */,
-				B1E265081DA8D87700C61381 /* Frameworks */,
-				B1E265091DA8D87700C61381 /* Resources */,
-				F1ABBBC934BA97EBAFD4E234 /* [CP] Embed Pods Frameworks */,
-				5DCF44B8DD50D650832E8026 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B1E265271DA8D8FC00C61381 /* PBXTargetDependency */,
-			);
-			name = Example;
-			productName = Example;
-			productReference = B1E2650B1DA8D87700C61381 /* Example.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -312,11 +210,6 @@
 				ORGANIZATIONNAME = isExist;
 				TargetAttributes = {
 					B166BC551D9BC88C00DDD2F2 = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = QB984N4CFG;
-						ProvisioningStyle = Automatic;
-					};
-					B1E2650A1DA8D87700C61381 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = QB984N4CFG;
 						ProvisioningStyle = Automatic;
@@ -337,7 +230,6 @@
 			projectRoot = "";
 			targets = (
 				B166BC551D9BC88C00DDD2F2 /* CZJUnit */,
-				B1E2650A1DA8D87700C61381 /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -352,74 +244,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1E265091DA8D87700C61381 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1E2651D1DA8D87700C61381 /* LaunchScreen.storyboard in Resources */,
-				B1E2651A1DA8D87700C61381 /* Assets.xcassets in Resources */,
-				B1E265181DA8D87700C61381 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		5DCF44B8DD50D650832E8026 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Example/Pods/Target Support Files/Pods-Example/Pods-Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D793FDBC46295632B3B304A0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F1ABBBC934BA97EBAFD4E234 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Example/Pods/Target Support Files/Pods-Example/Pods-Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B166BC521D9BC88C00DDD2F2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47D912951DB384BA00366357 /* TestCase2.m in Sources */,
 				B166BC881D9BC8CA00DDD2F2 /* CZJTestViewController.m in Sources */,
 				B166BC821D9BC8CA00DDD2F2 /* CZJTestAppDelegate.m in Sources */,
 				B166BC871D9BC8CA00DDD2F2 /* CZJTestMainViewController.m in Sources */,
+				47D912931DB37D5A00366357 /* TestCase1.m in Sources */,
 				B166BC861D9BC8CA00DDD2F2 /* CZJTestMainView.m in Sources */,
 				B1A041B41DA5598700BECAC6 /* CZJTestSuite.m in Sources */,
 				B166BC831D9BC8CA00DDD2F2 /* CZJTestCase.m in Sources */,
@@ -429,81 +265,19 @@
 				B166BC841D9BC8CA00DDD2F2 /* CZJTestCaseCell.m in Sources */,
 				B166BC5B1D9BC88C00DDD2F2 /* main.m in Sources */,
 				B171C3B91D9D1F2300C3F656 /* CZJTestGroup.m in Sources */,
+				470C790B1DB2620800DF5BEE /* CZJTestRunner.m in Sources */,
 				B166BC811D9BC8CA00DDD2F2 /* CZJTest.m in Sources */,
 				B1B0A9121D9CF86E00B5BA81 /* CZJTestNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B1E265071DA8D87700C61381 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B1E2652E1DA8D9CD00C61381 /* CZJTest-Prefix.pch in Sources */,
-				B1E2652F1DA8D9CD00C61381 /* CZJTesting.h in Sources */,
-				B1E265301DA8D9CD00C61381 /* CZJTesting.m in Sources */,
-				B1E265311DA8D9CD00C61381 /* CZJTestNode.h in Sources */,
-				B1E265321DA8D9CD00C61381 /* CZJTestNode.m in Sources */,
-				B1E265331DA8D9CD00C61381 /* CZJTestGroup.h in Sources */,
-				B1E265341DA8D9CD00C61381 /* CZJTestGroup.m in Sources */,
-				B1E265351DA8D9CD00C61381 /* CZJTestCaseCell.h in Sources */,
-				B1E265361DA8D9CD00C61381 /* CZJTestCaseCell.m in Sources */,
-				B1E265371DA8D9CD00C61381 /* CZJTestViewModel.h in Sources */,
-				B1E265381DA8D9CD00C61381 /* CZJTestViewModel.m in Sources */,
-				B1E265391DA8D9CD00C61381 /* CZJTestViewController.h in Sources */,
-				B1E2653A1DA8D9CD00C61381 /* CZJTestViewController.m in Sources */,
-				B1E2653B1DA8D9CD00C61381 /* CZJTestMainView.h in Sources */,
-				B1E2653C1DA8D9CD00C61381 /* CZJTestMainView.m in Sources */,
-				B1E2653D1DA8D9CD00C61381 /* CZJTestMainViewController.h in Sources */,
-				B1E2653E1DA8D9CD00C61381 /* CZJTestMainViewController.m in Sources */,
-				B1E2653F1DA8D9CD00C61381 /* CZJTestTableViewDataSource.h in Sources */,
-				B1E265401DA8D9CD00C61381 /* CZJTestTableViewDataSource.m in Sources */,
-				B1E265411DA8D9CD00C61381 /* CZJTestSuite.h in Sources */,
-				B1E265421DA8D9CD00C61381 /* CZJTestSuite.m in Sources */,
-				B1E2652C1DA8D9B400C61381 /* CZJTestAppDelegate.h in Sources */,
-				B1E2652D1DA8D9B400C61381 /* CZJTestAppDelegate.m in Sources */,
-				B1E2652A1DA8D94E00C61381 /* CZJTest.m in Sources */,
-				B1E2652B1DA8D94E00C61381 /* CZJTestCase.m in Sources */,
-				B1E265291DA8D94000C61381 /* CZJTestCase.h in Sources */,
-				B1E265281DA8D92E00C61381 /* CZJTest.h in Sources */,
-				B1E265151DA8D87700C61381 /* ViewController.m in Sources */,
-				B1E265251DA8D8EB00C61381 /* TestCase2.m in Sources */,
-				B1E265121DA8D87700C61381 /* AppDelegate.m in Sources */,
-				B1E2650F1DA8D87700C61381 /* main.m in Sources */,
-				B1E265241DA8D8EB00C61381 /* TestCase1.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B1E265271DA8D8FC00C61381 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B166BC551D9BC88C00DDD2F2 /* CZJUnit */;
-			targetProxy = B1E265261DA8D8FC00C61381 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B166BC671D9BC88C00DDD2F2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B166BC681D9BC88C00DDD2F2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		B1E265161DA8D87700C61381 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B1E265171DA8D87700C61381 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B1E2651B1DA8D87700C61381 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B1E2651C1DA8D87700C61381 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -627,40 +401,6 @@
 			};
 			name = Release;
 		};
-		B1E265201DA8D87700C61381 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = C607120C1CC86939232CE261 /* Pods-Example.debug.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = QB984N4CFG;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Example",
-				);
-				INFOPLIST_FILE = Example/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = isExist.Example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		B1E265211DA8D87700C61381 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC6206623DD9DCDDD32DF048 /* Pods-Example.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = QB984N4CFG;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Example",
-				);
-				INFOPLIST_FILE = Example/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = isExist.Example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -678,15 +418,6 @@
 			buildConfigurations = (
 				B166BC6E1D9BC88C00DDD2F2 /* Debug */,
 				B166BC6F1D9BC88C00DDD2F2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B1E2651F1DA8D87700C61381 /* Build configuration list for PBXNativeTarget "Example" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B1E265201DA8D87700C61381 /* Debug */,
-				B1E265211DA8D87700C61381 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

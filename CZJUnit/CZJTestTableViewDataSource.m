@@ -8,6 +8,7 @@
 
 #import "CZJTestTableViewDataSource.h"
 #import "CZJTestNode.h"
+#import "CZJTestSuite.h"
 
 static NSString *kCellIdentifier = @"identifier";
 
@@ -16,6 +17,31 @@ static NSString *kCellIdentifier = @"identifier";
 - (CZJTestNode *)nodeForIndexPath:(NSIndexPath *)indexPath {
     CZJTestNode *sectionNode = self.root.children[indexPath.section];
     return sectionNode.children[indexPath.row];
+}
+
+- (NSArray<CZJTestNode *> *)nodesForIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    NSMutableArray *nodes = [NSMutableArray array];
+    
+    for (NSIndexPath *indexPath in indexPaths) {
+        CZJTestNode *node = [self nodeForIndexPath:indexPath];
+        [nodes addObject:node];
+    }
+    
+    return nodes;
+}
+
+- (CZJTestNode *)nodeWithChildrenAnIndexpaths:(NSArray<NSIndexPath *> *)indexPaths {
+    NSMutableArray<id<CZJTest>> *children = [NSMutableArray array];
+    NSArray *nodes = [self nodesForIndexPaths:indexPaths];
+    for (id<CZJTest> childTest in nodes) {
+        [children addObject:childTest];
+    }
+    
+    CZJTestSuite *suite = [[CZJTestSuite alloc] initWithName:nil delegate:nil];
+    [suite addTests:children];
+    CZJTestNode *root = [CZJTestNode nodeWithTest:suite children:suite.children source:self];
+    
+    return root;
 }
 
 #pragma mark - UITableViewDataSource

@@ -6,14 +6,13 @@
 //  Copyright © 2016年 isExist. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 
-@class UIViewController;
+#import <UIKit/UIKit.h>
 
 /*!
  * Get current displaying view controller.
  */
-extern UIViewController * CZJCurrentDisplayingViewController(void);
+UIViewController * CZJCurrentDisplayingViewController(void);
 
 @interface CZJTestCase : NSObject
 

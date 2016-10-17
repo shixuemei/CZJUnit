@@ -8,8 +8,6 @@
 
 #import "CZJTestCase.h"
 
-#import <UIKit/UIKit.h>
-
 UIViewController * CZJCurrentDisplayingViewController(void) {
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     if ([rootVC isKindOfClass:[UINavigationController class]]) {

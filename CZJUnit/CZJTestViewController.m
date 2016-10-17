@@ -8,6 +8,7 @@
 
 #import "CZJTestViewController.h"
 #import "CZJTestNode.h"
+#import "CZJTestRunner.h"
 
 @interface CZJTestViewController () {
     CZJTestNode *_testNode;
@@ -53,8 +54,8 @@
 #pragma mark - Private methods
 
 - (void)toggleCtrlButton {
-    
-    [_testNode.test run:CZJTestOptionForceSetUpTearDownClass];
+    [[CZJTestRunner sharedRunner] runTest:_testNode.test
+                              withOptions:CZJTestOptionNone];
 }
 
 - (void)toggleLogButton {
