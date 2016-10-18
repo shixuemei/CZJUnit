@@ -11,6 +11,7 @@
 
 @implementation CZJTestNode {
     NSMutableArray<CZJTestNode *> *_children;
+    NSMutableArray<CZJTestNode *> *_filteredChildren;
 }
 
 @synthesize children = _children;
@@ -48,6 +49,9 @@
 }
 
 - (NSArray<CZJTestNode *> *)children {
+    if (_filter != CZJTestNodeFilterNone || _textFilter) {
+        return _filteredChildren;
+    }
     return _children;
 }
 
@@ -57,6 +61,53 @@
 
 - (NSString*)identifier {
     return [_test identifier];
+}
+
+- (void)setFilter:(CZJTestNodeFilter)filter textFilter:(NSString *)textFilter {
+    _filter = filter;
+    
+    textFilter = [textFilter stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if ([textFilter isEqualToString:@""]) {
+        textFilter = nil;
+    }
+    
+    _textFilter = [textFilter lowercaseString];
+    [self applyFilters];
+}
+
+- (void)setFilter:(CZJTestNodeFilter)filter {
+    [self setFilter:filter textFilter:_textFilter];
+}
+
+- (void)setTextFilter:(NSString *)textFilter {
+    [self setFilter:_filter textFilter:textFilter];
+}
+
+- (BOOL)hasChildren {
+    return self.children.count > 0;
+}
+
+#pragma mark - Private methods
+
+- (void)applyFilters {
+    NSMutableSet *textFiltered = [NSMutableSet set];
+    for (CZJTestNode *childNode in _children) {
+        childNode.textFilter = _textFilter;
+        if (_textFilter) {
+            if ([[self.name lowercaseString] containsString:_textFilter]
+                || [[childNode.name lowercaseString] containsString:_textFilter]
+                || [childNode hasChildren]) {
+                [textFiltered addObject:childNode];
+            }
+        }
+    }
+    
+    _filteredChildren = [NSMutableArray array];
+    for(CZJTestNode *childNode in _children) {
+        if (!_textFilter || [textFiltered containsObject:childNode]) {
+            [_filteredChildren addObject:childNode];
+        }
+    }
 }
 
 @end

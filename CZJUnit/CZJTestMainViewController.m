@@ -15,7 +15,7 @@
 #import "CZJTestSuite.h"
 #import "CZJTestRunner.h"
 
-@interface CZJTestMainViewController () <UITableViewDelegate, CZJTestDisplayDelegate> {
+@interface CZJTestMainViewController () <UITableViewDelegate, UISearchBarDelegate, CZJTestDisplayDelegate> {
     UIBarButtonItem *_testCtrlButton;
     UIBarButtonItem *_testMarkButton;
     CZJTestMainView *_mainView;
@@ -37,6 +37,7 @@
     _mainView.tableView.delegate = self;
     _mainView.tableView.dataSource = self.dataSource;
     _mainView.tableView.allowsMultipleSelection = YES;
+    _mainView.searchBar.delegate = self;
     
     _testCtrlButton = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStylePlain target:self action:@selector(toggleCtrlButton)];
     _testMarkButton = [[UIBarButtonItem alloc] initWithTitle:@"Mark" style:UIBarButtonItemStylePlain target:self action:@selector(toggleMarkButton)];
@@ -52,6 +53,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)shouldAutorotate {
+    return NO;
 }
 
 - (CZJTestTableViewDataSource *)dataSource {
@@ -95,12 +100,30 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+#pragma mark - UISearchBarDelegate
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self.dataSource.root setFilter:CZJTestNodeFilterNone textFilter:searchText];
+    [_mainView.tableView reloadData];
+}
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = YES;
+    return YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    searchBar.showsCancelButton = NO;
+    [searchBar resignFirstResponder];
+}
+
 #pragma mark - Private methods
 
 - (void)toggleCtrlButton {
     if (_mainView.tableView.isEditing) {
         NSArray *indexPaths = _mainView.tableView.indexPathsForSelectedRows;
         for (NSIndexPath *indexPath in indexPaths) {
+            
             CZJTestNode *node = [self.dataSource nodeForIndexPath:indexPath];
             [[CZJTestRunner sharedRunner] runTest:node.test
                                       withOptions:CZJTestOptionNone

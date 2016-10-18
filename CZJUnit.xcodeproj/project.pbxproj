@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		470C790B1DB2620800DF5BEE /* CZJTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C790A1DB2620800DF5BEE /* CZJTestRunner.m */; };
-		47D912931DB37D5A00366357 /* TestCase1.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D912921DB37D5A00366357 /* TestCase1.m */; };
-		47D912951DB384BA00366357 /* TestCase2.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D912941DB384BA00366357 /* TestCase2.m */; };
+		47D9129E1DB5CB5400366357 /* TestCase1.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D9129C1DB5CB5400366357 /* TestCase1.m */; };
+		47D9129F1DB5CB5400366357 /* TestCase2.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D9129D1DB5CB5400366357 /* TestCase2.m */; };
 		B166BC5B1D9BC88C00DDD2F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B166BC5A1D9BC88C00DDD2F2 /* main.m */; };
 		B166BC661D9BC88C00DDD2F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B166BC651D9BC88C00DDD2F2 /* Assets.xcassets */; };
 		B166BC691D9BC88C00DDD2F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B166BC671D9BC88C00DDD2F2 /* LaunchScreen.storyboard */; };
@@ -29,11 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		177CCCC99A29C4E0745595F8 /* Pods_CZJUnit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CZJUnit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		470C79091DB2620800DF5BEE /* CZJTestRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJTestRunner.h; sourceTree = "<group>"; };
 		470C790A1DB2620800DF5BEE /* CZJTestRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJTestRunner.m; sourceTree = "<group>"; };
-		47D912921DB37D5A00366357 /* TestCase1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCase1.m; sourceTree = "<group>"; };
-		47D912941DB384BA00366357 /* TestCase2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestCase2.m; sourceTree = "<group>"; };
-		47D912961DB388F200366357 /* Test-Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Test-Macros.h"; sourceTree = "<group>"; };
+		47D9129B1DB5CB5400366357 /* Test-Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Test-Macros.h"; path = "Examples/Test-Macros.h"; sourceTree = "<group>"; };
+		47D9129C1DB5CB5400366357 /* TestCase1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestCase1.m; path = Examples/TestCase1.m; sourceTree = "<group>"; };
+		47D9129D1DB5CB5400366357 /* TestCase2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestCase2.m; path = Examples/TestCase2.m; sourceTree = "<group>"; };
+		47D912A01DB5FD9700366357 /* libksygpulive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksygpulive.framework; path = "../../../Library/Developer/Xcode/DerivedData/CZJUnit-ekpgmwrinutpxvfdfbnuhswtarta/Build/Products/Debug-iphoneos/libksygpulive.framework"; sourceTree = "<group>"; };
 		9F25E718A3726365DE443E33 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		AAA80A503A7D692DE89A4ED3 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B166BC561D9BC88C00DDD2F2 /* CZJUnit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CZJUnit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +72,8 @@
 		B1B0A9111D9CF86E00B5BA81 /* CZJTestNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJTestNode.m; sourceTree = "<group>"; };
 		BA8293DFD2BDCC180304BC65 /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C607120C1CC86939232CE261 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Example/Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		CF6029C5A8F2021990258CC8 /* Pods-CZJUnit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CZJUnit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CZJUnit/Pods-CZJUnit.debug.xcconfig"; sourceTree = "<group>"; };
+		E6BEE4CFBED0684A269C46B6 /* Pods-CZJUnit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CZJUnit.release.xcconfig"; path = "Pods/Target Support Files/Pods-CZJUnit/Pods-CZJUnit.release.xcconfig"; sourceTree = "<group>"; };
 		FC6206623DD9DCDDD32DF048 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Example/Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,9 +91,9 @@
 		47D912901DB37D3C00366357 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				47D912921DB37D5A00366357 /* TestCase1.m */,
-				47D912941DB384BA00366357 /* TestCase2.m */,
-				47D912961DB388F200366357 /* Test-Macros.h */,
+				47D9129B1DB5CB5400366357 /* Test-Macros.h */,
+				47D9129C1DB5CB5400366357 /* TestCase1.m */,
+				47D9129D1DB5CB5400366357 /* TestCase2.m */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
@@ -101,6 +105,8 @@
 				9F25E718A3726365DE443E33 /* Pods-Example.release.xcconfig */,
 				C607120C1CC86939232CE261 /* Pods-Example.debug.xcconfig */,
 				FC6206623DD9DCDDD32DF048 /* Pods-Example.release.xcconfig */,
+				CF6029C5A8F2021990258CC8 /* Pods-CZJUnit.debug.xcconfig */,
+				E6BEE4CFBED0684A269C46B6 /* Pods-CZJUnit.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -175,7 +181,9 @@
 		B779437B6B0D809A06C1FBFF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				47D912A01DB5FD9700366357 /* libksygpulive.framework */,
 				BA8293DFD2BDCC180304BC65 /* Pods_Example.framework */,
+				177CCCC99A29C4E0745595F8 /* Pods_CZJUnit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -251,11 +259,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47D912951DB384BA00366357 /* TestCase2.m in Sources */,
+				47D9129F1DB5CB5400366357 /* TestCase2.m in Sources */,
 				B166BC881D9BC8CA00DDD2F2 /* CZJTestViewController.m in Sources */,
 				B166BC821D9BC8CA00DDD2F2 /* CZJTestAppDelegate.m in Sources */,
 				B166BC871D9BC8CA00DDD2F2 /* CZJTestMainViewController.m in Sources */,
-				47D912931DB37D5A00366357 /* TestCase1.m in Sources */,
+				47D9129E1DB5CB5400366357 /* TestCase1.m in Sources */,
 				B166BC861D9BC8CA00DDD2F2 /* CZJTestMainView.m in Sources */,
 				B1A041B41DA5598700BECAC6 /* CZJTestSuite.m in Sources */,
 				B166BC831D9BC8CA00DDD2F2 /* CZJTestCase.m in Sources */,

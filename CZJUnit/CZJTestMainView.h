@@ -11,5 +11,6 @@
 @interface CZJTestMainView : UIView
 
 @property (nonatomic, strong, readonly) UITableView *tableView;
+@property (nonatomic, strong, readonly) UISearchBar *searchBar;
 
 @end

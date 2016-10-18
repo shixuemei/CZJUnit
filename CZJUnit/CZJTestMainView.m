@@ -14,11 +14,13 @@
 const CGFloat kVerticalSpacing = 5.f;
 const CGFloat kHorizenSpacing = 5.f;
 const CGFloat kSegmentedControlHeight = 30.f;
+const CGFloat kSearchBarHeight = 40.f;
 
 @interface CZJTestMainView ()
 
 @property (nonatomic, strong) UITableView *         tableView;
 @property (nonatomic, strong) UISegmentedControl *  segmentedControl;
+@property (nonatomic, strong) UISearchBar *         searchBar;
 
 @end
 
@@ -30,8 +32,8 @@ const CGFloat kSegmentedControlHeight = 30.f;
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         
-        CGRect segFrame = CGRectMake(kHorizenSpacing,
-                                     MAINSCREEN_HEIGHT - kVerticalSpacing - kSegmentedControlHeight,
+        CGRect segFrame = CGRectMake(frame.origin.x + kHorizenSpacing,
+                                     frame.origin.y + frame.size.height - kVerticalSpacing - kSegmentedControlHeight,
                                      MAINSCREEN_WIDTH - 2 * kHorizenSpacing,
                                      kSegmentedControlHeight);
         _segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"All", @"Failed"]];
@@ -39,7 +41,17 @@ const CGFloat kSegmentedControlHeight = 30.f;
         _segmentedControl.selectedSegmentIndex = 0;
         [self addSubview:_segmentedControl];
         
-        CGRect tableFrame = CGRectMake(0, 64, MAINSCREEN_WIDTH, segFrame.origin.y - kVerticalSpacing - 64);
+        CGRect searchBarFrame = CGRectMake(frame.origin.x,
+                                           frame.origin.y + 64,
+                                           MAINSCREEN_WIDTH,
+                                           kSearchBarHeight);
+        _searchBar = [[UISearchBar alloc] initWithFrame:searchBarFrame];
+        [self addSubview:_searchBar];
+        
+        CGRect tableFrame = CGRectMake(frame.origin.x,
+                                       searchBarFrame.origin.y + kSearchBarHeight,
+                                       MAINSCREEN_WIDTH,
+                                       segFrame.origin.y - kVerticalSpacing - searchBarFrame.origin.y - searchBarFrame.size.height);
         _tableView = [[UITableView alloc] initWithFrame:tableFrame];
         [self addSubview:_tableView];
     }
