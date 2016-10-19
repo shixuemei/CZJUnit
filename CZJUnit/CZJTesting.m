@@ -160,19 +160,29 @@ static CZJTesting *_sharedInstance = nil;
                 exception:(NSException *__autoreleasing *)exception
                  interval:(NSTimeInterval *)interval
         reraiseExceptions:(BOOL)reraiseExceptions {
+
+    
+    NSException *testException = nil;
+    
 #pragma clang diagnostic push
     dispatch_sync(dispatch_get_main_queue(), ^{
         if ([target respondsToSelector:@selector(setUp)]) {
             [target performSelector:@selector(setUp)];
         }
-        
-        if ([target respondsToSelector:@selector(setCurrentSelector:)]) {
-            [target setCurrentSelector:selector];
-        }
     });
-
+    
+    if ([target respondsToSelector:@selector(setCurrentSelector:)]) {
+        [target setCurrentSelector:selector];
+    }
+    
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-    [target performSelector:selector];
+    @try {
+        [target performSelector:selector];
+    } @catch (NSException *exception) {
+        if (!testException) {
+            testException = exception;
+        }
+    }
     
     dispatch_sync(dispatch_get_main_queue(), ^{
         if ([target respondsToSelector:@selector(tearDown)]) {
@@ -181,26 +191,9 @@ static CZJTesting *_sharedInstance = nil;
     });
 #pragma clang diagnostic pop
     
-    NSException *testException = nil;
-//#pragma clang diagnostic push
-//    if ([target respondsToSelector:@selector(setUp)]) {
-//        [target performSelector:@selector(setUp)];
-//    }
-//    
-//    if ([target respondsToSelector:@selector(setCurrentSelector:)]) {
-//        [target setCurrentSelector:selector];
-//    }
-//#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-//    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        NSLog(@"%@ %@", NSStringFromSelector(_cmd), [NSThread currentThread]);
-//        [target performSelector:selector];
-//    });
-//    
-//    if ([target respondsToSelector:@selector(tearDown)]) {
-//        [target performSelector:@selector(tearDown)];
-//    }
-//#pragma clang diagnostic pop
-    
+    if (exception) {
+        *exception = testException;
+    }
     BOOL passed = (!testException);
     
     return passed;

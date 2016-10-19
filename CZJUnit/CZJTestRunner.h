@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "CZJTest.h"
 
+FOUNDATION_EXPORT NSString * const CZJUnitTestRunnerRunningStateChanged;
+
 @protocol CZJTestDisplayDelegate <NSObject>
 
 - (void)willDisplayTest:(id<CZJTest>)test;
@@ -19,6 +21,8 @@
 
 @interface CZJTestRunner : NSObject
 
+@property (nonatomic, assign, readonly, getter=isRunning) BOOL running;
+
 + (instancetype)sharedRunner;
 
 - (void)runTest:(id<CZJTest>)test
@@ -27,5 +31,7 @@
 
 - (void)runTest:(id<CZJTest>)test
     withOptions:(CZJTestOptions)options;
+
+- (void)cancel;
 
 @end

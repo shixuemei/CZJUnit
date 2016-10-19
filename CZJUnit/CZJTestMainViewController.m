@@ -27,6 +27,19 @@
 
 @implementation CZJTestMainViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runningStateChanged) name:CZJUnitTestRunnerRunningStateChanged object:[CZJTestRunner sharedRunner]];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:CZJUnitTestRunnerRunningStateChanged object:[CZJTestRunner sharedRunner]];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -41,7 +54,8 @@
     
     _testCtrlButton = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStylePlain target:self action:@selector(toggleCtrlButton)];
     _testMarkButton = [[UIBarButtonItem alloc] initWithTitle:@"Mark" style:UIBarButtonItemStylePlain target:self action:@selector(toggleMarkButton)];
-    self.navigationItem.rightBarButtonItems = @[_testCtrlButton, _testMarkButton];
+    self.navigationItem.leftBarButtonItem = _testMarkButton;
+    self.navigationItem.rightBarButtonItem = _testCtrlButton;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -120,25 +134,34 @@
 #pragma mark - Private methods
 
 - (void)toggleCtrlButton {
-    if (_mainView.tableView.isEditing) {
-        NSArray *indexPaths = _mainView.tableView.indexPathsForSelectedRows;
-        for (NSIndexPath *indexPath in indexPaths) {
-            
-            CZJTestNode *node = [self.dataSource nodeForIndexPath:indexPath];
-            [[CZJTestRunner sharedRunner] runTest:node.test
+    if ([CZJTestRunner sharedRunner].isRunning) {
+        [[CZJTestRunner sharedRunner] cancel];
+    } else {
+        if (_mainView.tableView.isEditing) {
+            NSArray *indexPaths = _mainView.tableView.indexPathsForSelectedRows;
+            for (NSIndexPath *indexPath in indexPaths) {
+                
+                CZJTestNode *node = [self.dataSource nodeForIndexPath:indexPath];
+                [[CZJTestRunner sharedRunner] runTest:node.test
+                                          withOptions:CZJTestOptionNone
+                                          inDisplayer:self];
+            }
+        } else {
+            [[CZJTestRunner sharedRunner] runTest:self.dataSource.root.test
                                       withOptions:CZJTestOptionNone
                                       inDisplayer:self];
         }
-    } else {
-        [[CZJTestRunner sharedRunner] runTest:self.dataSource.root.test
-                                  withOptions:CZJTestOptionNone
-                                  inDisplayer:self];
     }
 }
 
 - (void)toggleMarkButton {
     _mainView.tableView.editing = !_mainView.tableView.isEditing;
     _testMarkButton.title = _mainView.tableView.isEditing ? @"Done" : @"Mark";
+}
+
+- (void)runningStateChanged {
+    NSString *ctrlString = [CZJTestRunner sharedRunner].isRunning ? @"Cancel" : @"Run";
+    _testCtrlButton.title = ctrlString;
 }
 
 @end

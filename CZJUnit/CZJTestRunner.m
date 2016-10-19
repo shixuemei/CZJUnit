@@ -10,6 +10,14 @@
 #import "CZJTestGroup.h"
 #import "CZJTesting.h"
 
+NSString * const CZJUnitTestRunnerRunningStateChanged = @"CZJUnitTestRunnerRunningStateChanged";
+
+@interface CZJTestRunner ()
+
+@property (nonatomic, assign, getter=isRunning) BOOL running;
+
+@end
+
 @implementation CZJTestRunner {
     NSOperationQueue *_testQueue;
 }
@@ -31,8 +39,16 @@ static CZJTestRunner *_sharedRunner = nil;
     if (self) {
         _testQueue = [[NSOperationQueue alloc] init];
         _testQueue.maxConcurrentOperationCount = 1;
+        [_testQueue addObserver:self
+                     forKeyPath:@"operationCount"
+                        options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
+                        context:nil];
     }
     return self;
+}
+
+- (void)dealloc {
+    [_testQueue removeObserver:self forKeyPath:@"operationCount" context:nil];
 }
 
 + (instancetype)allocWithZone:(struct _NSZone *)zone {
@@ -49,19 +65,59 @@ static CZJTestRunner *_sharedRunner = nil;
 
 - (void)runTest:(id<CZJTest>)test
     withOptions:(CZJTestOptions)options
-    inDisplayer:(id<CZJTestDisplayDelegate>)displayer{
+    inDisplayer:(id<CZJTestDisplayDelegate>)displayer {
+    _testQueue.suspended = YES;
+    
+    [self addTest:test withOptions:options inDisplayer:displayer];
+    
+    _testQueue.suspended = NO;
+}
+
+- (void)runTest:(id<CZJTest>)test withOptions:(CZJTestOptions)options {
+    [self runTest:test withOptions:options inDisplayer:nil];
+}
+
+- (BOOL)isRunning {
+    return _testQueue.operationCount > 0;
+}
+
+- (void)cancel {
+    if (self.isRunning) {
+        [_testQueue cancelAllOperations];
+    }
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if (object == _testQueue) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSDictionary *userInfo = @{@"operationCount" : [NSNumber numberWithUnsignedInteger:_testQueue.operationCount]};
+            if ([keyPath isEqualToString:@"operationCount"]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:CZJUnitTestRunnerRunningStateChanged
+                                                                    object:self
+                                                                  userInfo:userInfo];
+            }
+        });
+    }
+}
+
+#pragma mark - Private methods
+
+- (void)addTest:(id<CZJTest>)test
+    withOptions:(CZJTestOptions)options
+    inDisplayer:(id<CZJTestDisplayDelegate>)displayer {
     if ([test isKindOfClass:[CZJTest class]]) {
         CZJTest *aTest = (CZJTest *)test;
-        
+
         [_testQueue addOperationWithBlock:^{
+            
             if (displayer) {
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [displayer willDisplayTest:aTest];
                 });
             }
-            
+
             aTest.status = CZJTestStatusRunning;
-            
+
             BOOL reraiseExceptions = ((options & CZJTestOptionReraiseExceptions) == CZJTestOptionReraiseExceptions);
             NSException *exception = nil;
             [CZJTesting runTestWithTarget:aTest.target
@@ -69,27 +125,21 @@ static CZJTestRunner *_sharedRunner = nil;
                                 exception:&exception
                                  interval:nil
                         reraiseExceptions:reraiseExceptions];
-            
+
             if (displayer) {
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [displayer didDisplayTest:aTest];
                 });
             }
-            
+
             sleep(1);
         }];
     } else {
         CZJTestGroup *testGroup = (CZJTestGroup *)test;
         for (id<CZJTest> childTest in testGroup.children) {
-            [self runTest:childTest withOptions:options inDisplayer:displayer];
+            [self addTest:childTest withOptions:options inDisplayer:displayer];
         }
     }
 }
-
-- (void)runTest:(id<CZJTest>)test withOptions:(CZJTestOptions)options {
-    [self runTest:test withOptions:options inDisplayer:nil];
-}
-
-#pragma mark - Private methods
 
 @end

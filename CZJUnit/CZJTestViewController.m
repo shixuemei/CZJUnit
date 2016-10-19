@@ -21,10 +21,24 @@
 
 @implementation CZJTestViewController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runningStateChanged) name:CZJUnitTestRunnerRunningStateChanged object:[CZJTestRunner sharedRunner]];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:CZJUnitTestRunnerRunningStateChanged object:[CZJTestRunner sharedRunner]];
+}
+
 - (void)loadView {
     self.view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.view.backgroundColor = [UIColor whiteColor];
-    _caseCtrlButton = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStylePlain target:self
+    NSString *ctrlTittle = [CZJTestRunner sharedRunner].isRunning ? @"Cancel" : @"Run";
+    _caseCtrlButton = [[UIBarButtonItem alloc] initWithTitle:ctrlTittle style:UIBarButtonItemStylePlain target:self
                                                       action:@selector(toggleCtrlButton)];
     _caseLogButton = [[UIBarButtonItem alloc] initWithTitle:@"Log" style:UIBarButtonItemStylePlain target:self
                                                      action:@selector(toggleLogButton)];
@@ -54,12 +68,20 @@
 #pragma mark - Private methods
 
 - (void)toggleCtrlButton {
-    [[CZJTestRunner sharedRunner] runTest:_testNode.test
-                              withOptions:CZJTestOptionNone];
+    if ([CZJTestRunner sharedRunner].isRunning) {
+        [[CZJTestRunner sharedRunner] cancel];
+    } else {
+        [[CZJTestRunner sharedRunner] runTest:_testNode.test
+                                  withOptions:CZJTestOptionNone];
+    }
 }
 
 - (void)toggleLogButton {
     
+}
+
+- (void)runningStateChanged {
+    _caseCtrlButton.title = [CZJTestRunner sharedRunner].isRunning ? @"Cancel" : @"Run";
 }
 
 @end

@@ -26,7 +26,7 @@
 - (void)testRedBlue {
     PRINT_CLASS_MATHOD;
     UIViewController *vc = CZJCurrentDisplayingViewController();
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 5; i++) {
         dispatch_sync(dispatch_get_main_queue(), ^{
             vc.view.backgroundColor = [UIColor redColor];
         });
@@ -41,7 +41,7 @@
 - (void)testWhiteBlack {
     PRINT_CLASS_MATHOD;
     UIViewController *vc = CZJCurrentDisplayingViewController();
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 1; i++) {
         dispatch_sync(dispatch_get_main_queue(), ^{
             vc.view.backgroundColor = [UIColor whiteColor];
         });
