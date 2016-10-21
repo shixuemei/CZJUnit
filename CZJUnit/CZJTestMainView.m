@@ -70,7 +70,9 @@ const CGFloat kSearchBarHeight = 40.f;
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ([object isKindOfClass:[UISegmentedControl class]]) {
         if ([keyPath isEqualToString:@"selectedSegmentIndex"]) {
-            [_searchBar.delegate searchBar:_searchBar textDidChange:nil];
+            if ([_searchBar.delegate respondsToSelector:@selector(searchBar:textDidChange:)]) {
+                [_searchBar.delegate searchBar:_searchBar textDidChange:@""];
+            }
         }
     }
 }
