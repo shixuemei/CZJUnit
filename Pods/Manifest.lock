@@ -1,0 +1,17 @@
+PODS:
+  - GPUImage (0.1.7)
+  - libksygpulive/libksygpulive (1.8.3):
+    - GPUImage
+
+DEPENDENCIES:
+  - libksygpulive/libksygpulive (from `~/Downloads/KSYLive_iOS`)
+
+EXTERNAL SOURCES:
+  libksygpulive:
+    :path: ~/Downloads/KSYLive_iOS
+
+SPEC CHECKSUMS:
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
+  libksygpulive: d980d3f2a8a162c8fb82ae620dc81bdba28a6f5b
+
+COCOAPODS: 0.39.0

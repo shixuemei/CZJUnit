@@ -69,10 +69,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)shouldAutorotate {
-    return NO;
-}
-
 - (CZJTestTableViewDataSource *)dataSource {
     if (!_dataSource) {
         _dataSource = [[CZJTestTableViewDataSource alloc] initWithIdentifier:@"Tests"
