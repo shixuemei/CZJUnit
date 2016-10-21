@@ -34,4 +34,6 @@ FOUNDATION_EXPORT NSString * const CZJUnitTestRunnerRunningStateChanged;
 
 - (void)cancel;
 
++ (NSString *)descriptionForException:(NSException *)exception;
+
 @end

@@ -54,8 +54,25 @@ const CGFloat kSearchBarHeight = 40.f;
                                        segFrame.origin.y - kVerticalSpacing - searchBarFrame.origin.y - searchBarFrame.size.height);
         _tableView = [[UITableView alloc] initWithFrame:tableFrame];
         [self addSubview:_tableView];
+        
+        [_segmentedControl addObserver:self
+                            forKeyPath:@"selectedSegmentIndex"
+                               options:NSKeyValueObservingOptionNew
+                               context:nil];
     }
     return self;
+}
+
+- (void)dealloc {
+    [_segmentedControl removeObserver:self forKeyPath:@"selectedSegmentIndex"];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if ([object isKindOfClass:[UISegmentedControl class]]) {
+        if ([keyPath isEqualToString:@"selectedSegmentIndex"]) {
+            [_searchBar.delegate searchBar:_searchBar textDidChange:nil];
+        }
+    }
 }
 
 @end

@@ -15,6 +15,10 @@
     
     UIBarButtonItem *_caseCtrlButton;
     UIBarButtonItem *_caseLogButton;
+    UITextView *_logView;
+    UIView *_maskView;
+    
+    BOOL _shouldShowLogView;
 }
 
 @end
@@ -26,6 +30,8 @@
     self = [super init];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runningStateChanged) name:CZJUnitTestRunnerRunningStateChanged object:[CZJTestRunner sharedRunner]];
+        
+        _shouldShowLogView = YES;
     }
     return self;
 }
@@ -43,6 +49,21 @@
     _caseLogButton = [[UIBarButtonItem alloc] initWithTitle:@"Log" style:UIBarButtonItemStylePlain target:self
                                                      action:@selector(toggleLogButton)];
     self.navigationItem.rightBarButtonItems = @[_caseCtrlButton, _caseLogButton];
+    
+    _maskView = [[UIView alloc] initWithFrame:self.view.frame];
+    _maskView.backgroundColor = [UIColor lightGrayColor];
+    _maskView.hidden = YES;
+    UITapGestureRecognizer *tapMaskViewGes = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                     action:@selector(toggleLogButton)];
+    [_maskView addGestureRecognizer:tapMaskViewGes];
+    [self.view addSubview:_maskView];
+    
+    _logView = [[UITextView alloc] init];
+    _logView.frame = CGRectMake(0,
+                                self.view.frame.size.height,
+                                self.view.frame.size.width,
+                                self.view.frame.size.height / 2);
+    [self.view addSubview:_logView];
 }
 
 - (void)viewDidLoad {
@@ -77,7 +98,41 @@
 }
 
 - (void)toggleLogButton {
+    if (_shouldShowLogView) {
+        _logView.text = @"";
+        NSArray *log = [(CZJTest *)_testNode.test log];
+        for (NSException *exception in log) {
+            NSString *logString = [CZJTestRunner descriptionForException:exception];
+            _logView.text = [_logView.text stringByAppendingString:logString];
+        }
+        
+        [UIView animateWithDuration:0.3f animations:^{
+            _maskView.hidden = NO;
+            _maskView.alpha = 1.f;
+            
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3f animations:^{
+                _logView.frame = CGRectMake(0,
+                                            self.view.center.y,
+                                            self.view.frame.size.width,
+                                            self.view.frame.size.height / 2);
+            }];
+        }];
+    } else {
+        [UIView animateWithDuration:0.3f animations:^{
+            _logView.frame = CGRectMake(0,
+                                        self.view.frame.size.height,
+                                        self.view.frame.size.width,
+                                        self.view.frame.size.height / 2);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3f animations:^{
+                _maskView.alpha = 0.f;
+                _maskView.hidden = YES;
+            }];
+        }];
+    }
     
+    _shouldShowLogView = !_shouldShowLogView;
 }
 
 - (void)runningStateChanged {

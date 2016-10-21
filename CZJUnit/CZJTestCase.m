@@ -7,6 +7,7 @@
 //
 
 #import "CZJTestCase.h"
+#import "CZJTesting.h"
 
 UIViewController * CZJCurrentDisplayingViewController(void) {
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
@@ -22,5 +23,13 @@ UIViewController * CZJCurrentDisplayingViewController(void) {
 - (void)setUp {}
 
 - (void)tearDown {}
+
+- (void)handleException:(NSException *)exception {
+    NSLog(@"%@", [CZJTesting descriptionForException:exception]);
+}
+
+- (void)failWithException:(NSException *)exception {
+    [exception raise];
+}
 
 @end

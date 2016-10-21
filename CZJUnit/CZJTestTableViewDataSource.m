@@ -74,7 +74,19 @@ static NSString *kCellIdentifier = @"identifier";
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellIdentifier];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", node.name];
+    NSString *mark = @"";
+    switch (node.test.status) {
+        case CZJTestStatusSucceeded:
+            mark = @"✔️";
+            break;
+        case CZJTestStatusErrored:
+            mark = @"❌";
+            break;
+            
+        default:
+            break;
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", node.name, mark];
     
     return cell;
 }

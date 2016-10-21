@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong, readonly) UITableView *tableView;
 @property (nonatomic, strong, readonly) UISearchBar *searchBar;
+@property (nonatomic, strong, readonly) UISegmentedControl *segmentedControl;
 
 @end

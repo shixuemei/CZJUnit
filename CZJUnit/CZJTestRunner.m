@@ -100,6 +100,19 @@ static CZJTestRunner *_sharedRunner = nil;
     }
 }
 
++ (NSString *)descriptionForException:(NSException *)exception {
+    NSNumber *lineNumber = [exception userInfo][GHTestLineNumberKey];
+    NSString *lineDescription = (lineNumber ? [lineNumber description] : @"Unknown");
+    NSString *filename = [[[exception userInfo][GHTestFilenameKey] stringByStandardizingPath] stringByAbbreviatingWithTildeInPath];
+    NSString *filenameDescription = (filename ? filename : @"Unknown");
+    
+    return [NSString stringWithFormat:@"Name: %@\nFile: %@\nLine: %@\nReason: %@\n\n",
+            [exception name],
+            filenameDescription,
+            lineDescription,
+            [exception reason]];
+}
+
 #pragma mark - Private methods
 
 - (void)addTest:(id<CZJTest>)test
@@ -120,11 +133,17 @@ static CZJTestRunner *_sharedRunner = nil;
 
             BOOL reraiseExceptions = ((options & CZJTestOptionReraiseExceptions) == CZJTestOptionReraiseExceptions);
             NSException *exception = nil;
-            [CZJTesting runTestWithTarget:aTest.target
-                                 selector:aTest.selector
-                                exception:&exception
-                                 interval:nil
-                        reraiseExceptions:reraiseExceptions];
+            BOOL passed = [CZJTesting runTestWithTarget:aTest.target
+                                               selector:aTest.selector
+                                              exception:&exception
+                                               interval:nil
+                                      reraiseExceptions:reraiseExceptions];
+            if (!passed) {
+                [aTest.log addObject:exception];
+                aTest.status = CZJTestStatusErrored;
+            } else {
+                aTest.status = CZJTestStatusSucceeded;
+            }
 
             if (displayer) {
                 dispatch_sync(dispatch_get_main_queue(), ^{

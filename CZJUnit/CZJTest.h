@@ -87,6 +87,8 @@ typedef struct {
 
 @property (nonatomic, assign, readonly) SEL selector;
 
+@property (nonatomic, copy) NSMutableArray *log;
+
 /*!
  Create test with identifier, name.
  @param identifier Unique identifier

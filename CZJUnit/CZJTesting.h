@@ -41,4 +41,6 @@ BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass);
 
 - (BOOL)isTestCaseClass:(Class)aClass;
 
++ (NSString *)descriptionForException:(NSException *)exception;
+
 @end

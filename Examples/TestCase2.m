@@ -25,6 +25,8 @@
 
 - (void)test1 {
     PRINT_CLASS_MATHOD;
+    
+    GHAssertEquals(1, 1, nil);
 }
 
 @end

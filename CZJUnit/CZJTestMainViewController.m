@@ -117,7 +117,8 @@
 #pragma mark - UISearchBarDelegate
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [self.dataSource.root setFilter:CZJTestNodeFilterNone textFilter:searchText];
+    CZJTestNodeFilter filter = _mainView.segmentedControl.selectedSegmentIndex == 0 ? CZJTestNodeFilterNone : CZJTestNodeFilterFailed;
+    [self.dataSource.root setFilter:filter textFilter:searchText];
     [_mainView.tableView reloadData];
 }
 
@@ -162,6 +163,7 @@
 - (void)runningStateChanged {
     NSString *ctrlString = [CZJTestRunner sharedRunner].isRunning ? @"Cancel" : @"Run";
     _testCtrlButton.title = ctrlString;
+    [_mainView.tableView reloadData];
 }
 
 @end

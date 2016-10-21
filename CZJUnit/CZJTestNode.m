@@ -87,6 +87,10 @@
     return self.children.count > 0;
 }
 
+- (BOOL)isFailed {
+    return _test.status == CZJTestStatusErrored;
+}
+
 #pragma mark - Private methods
 
 - (void)applyFilters {
@@ -102,9 +106,21 @@
         }
     }
     
+    NSMutableSet *filtered = [NSMutableSet set];
+    for (CZJTestNode *childNode in _children) {
+        childNode.filter = _filter;
+        if (_filter == CZJTestNodeFilterFailed) {
+            if ([childNode hasChildren] || childNode.isFailed) {
+                [filtered addObject:childNode];
+            }
+        }
+    }
+    
     _filteredChildren = [NSMutableArray array];
     for(CZJTestNode *childNode in _children) {
-        if (!_textFilter || [textFiltered containsObject:childNode]) {
+        if (((!_textFilter || [textFiltered containsObject:childNode])
+            && ((_filter == CZJTestNodeFilterNone || [filtered containsObject:childNode])))
+            || [childNode hasChildren]) {
             [_filteredChildren addObject:childNode];
         }
     }

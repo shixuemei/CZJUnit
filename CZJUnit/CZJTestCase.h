@@ -9,6 +9,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "GHTestMacros.h"
+
 /*!
  * Get current displaying view controller.
  */
@@ -21,5 +23,14 @@ UIViewController * CZJCurrentDisplayingViewController(void);
 - (void)setUp;      // Called before the invocation of the first test method in the class.
 
 - (void)tearDown;   // Called after the last test method in the class has completed.
+
+- (void)handleException:(NSException *)exception;
+
+/*!
+ By default exceptions are raised, causing a test failure
+ 
+ @param exception Exception that was raised by test
+ */
+- (void)failWithException:(NSException*)exception;
 
 @end

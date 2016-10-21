@@ -40,6 +40,8 @@ typedef NS_ENUM(NSInteger, CZJTestNodeFilter) {
 
 @property (nonatomic, copy) NSString *textFilter;
 
+@property (nonatomic, assign, readonly, getter=isFailed) BOOL failed;
+
 - (instancetype)initWithTest:(id<CZJTest>)test
                     children:(NSArray<id<CZJTest>> *)children
                       source:(CZJTestViewModel *)source;

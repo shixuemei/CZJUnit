@@ -23,6 +23,7 @@ static NSString *kNSCodingKey_identifier = @"identifier";
 @implementation CZJTest {
     NSString *_name;
     NSString *_identifier;
+    CZJTestStatus _status;
 }
 
 @synthesize identifier = _identifier, name = _name, status = _status, delegate = _delegate;
@@ -31,6 +32,8 @@ static NSString *kNSCodingKey_identifier = @"identifier";
     if (self = [self init]) {
         _name = name;
         _identifier = identifier;
+        _log = [NSMutableArray array];
+        _status = CZJTestStatusNone;
     }
     
     return self;
@@ -64,6 +67,10 @@ static NSString *kNSCodingKey_identifier = @"identifier";
         default:
             return CZJTestStatsMake(0, 0, 0, 1);
     }
+}
+
+- (void)setStatus:(CZJTestStatus)status {
+    _status = status;
 }
 
 #pragma mark - Private methods

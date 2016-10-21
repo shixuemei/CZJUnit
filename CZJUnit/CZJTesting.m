@@ -9,6 +9,7 @@
 #import "CZJTesting.h"
 #import <objc/runtime.h>
 #import "CZJTestCase.h"
+#import "GHTestMacros.h"
 
 BOOL isTestFixtureOfClass(Class aClass, Class testCaseClass) {
     if (testCaseClass == NULL)
@@ -184,6 +185,10 @@ static CZJTesting *_sharedInstance = nil;
         }
     }
     
+    if ([target respondsToSelector:@selector(setCurrentSelector:)]) {
+        [target setCurrentSelector:NULL];
+    }
+    
     dispatch_sync(dispatch_get_main_queue(), ^{
         if ([target respondsToSelector:@selector(tearDown)]) {
             [target performSelector:@selector(tearDown)];
@@ -205,6 +210,20 @@ static CZJTesting *_sharedInstance = nil;
     }
     
     return NO;
+}
+
++ (NSString *)descriptionForException:(NSException *)exception {
+    NSNumber *lineNumber = [exception userInfo][GHTestLineNumberKey];
+    NSString *lineDescription = (lineNumber ? [lineNumber description] : @"Unknown");
+    NSString *filename = [[[exception userInfo][GHTestFilenameKey] stringByStandardizingPath] stringByAbbreviatingWithTildeInPath];
+    NSString *filenameDescription = (filename ? filename : @"Unknown");
+    
+    return [NSString stringWithFormat:@"\n\tName: %@\n\tFile: %@\n\tLine: %@\n\tReason: %@\n\n%@",
+            [exception name],
+            filenameDescription,
+            lineDescription,
+            [exception reason],
+            [exception callStackSymbols]];
 }
 
 @end
