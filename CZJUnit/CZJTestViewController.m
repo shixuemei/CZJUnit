@@ -51,7 +51,7 @@
     self.navigationItem.rightBarButtonItems = @[_caseCtrlButton, _caseLogButton];
     
     _maskView = [[UIView alloc] initWithFrame:self.view.frame];
-    _maskView.backgroundColor = [UIColor lightGrayColor];
+    _maskView.backgroundColor = [UIColor darkGrayColor];
     _maskView.hidden = YES;
     UITapGestureRecognizer *tapMaskViewGes = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                      action:@selector(toggleLogButton)];
@@ -99,6 +99,9 @@
 
 - (void)toggleLogButton {
     if (_shouldShowLogView) {
+        [self.view bringSubviewToFront:_maskView];
+        [self.view bringSubviewToFront:_logView];
+        
         _logView.text = @"";
         NSArray *log = [(CZJTest *)_testNode.test log];
         for (NSException *exception in log) {
@@ -108,15 +111,13 @@
         
         [UIView animateWithDuration:0.3f animations:^{
             _maskView.hidden = NO;
-            _maskView.alpha = 1.f;
+            _maskView.alpha = .3f;
             
-        } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.3f animations:^{
-                _logView.frame = CGRectMake(0,
-                                            self.view.center.y,
-                                            self.view.frame.size.width,
-                                            self.view.frame.size.height / 2);
-            }];
+            _logView.frame = CGRectMake(0,
+                                        self.view.center.y,
+                                        self.view.frame.size.width,
+                                        self.view.frame.size.height / 2);
+            
         }];
     } else {
         [UIView animateWithDuration:0.3f animations:^{
@@ -124,7 +125,7 @@
                                         self.view.frame.size.height,
                                         self.view.frame.size.width,
                                         self.view.frame.size.height / 2);
-        } completion:^(BOOL finished) {
+            
             [UIView animateWithDuration:0.3f animations:^{
                 _maskView.alpha = 0.f;
                 _maskView.hidden = YES;

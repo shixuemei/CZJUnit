@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13AA613D525C88084A354659 /* Pods_CZJUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 177CCCC99A29C4E0745595F8 /* Pods_CZJUnit.framework */; };
 		470C790B1DB2620800DF5BEE /* CZJTestRunner.m in Sources */ = {isa = PBXBuildFile; fileRef = 470C790A1DB2620800DF5BEE /* CZJTestRunner.m */; };
-		47D9129E1DB5CB5400366357 /* TestCase1.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D9129C1DB5CB5400366357 /* TestCase1.m */; };
-		47D9129F1DB5CB5400366357 /* TestCase2.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D9129D1DB5CB5400366357 /* TestCase2.m */; };
 		47D912DB1DB9AE8900366357 /* NSException+GHTestFailureExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D912D81DB9AE8900366357 /* NSException+GHTestFailureExceptions.m */; };
 		47D912DC1DB9AE8900366357 /* NSValue+GHValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D912DA1DB9AE8900366357 /* NSValue+GHValueFormatter.m */; };
+		47D912DF1DBA053200366357 /* TestLive.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D912DD1DBA053200366357 /* TestLive.m */; };
+		47D912E01DBA053200366357 /* TestPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D912DE1DBA053200366357 /* TestPlayer.m */; };
 		B166BC5B1D9BC88C00DDD2F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B166BC5A1D9BC88C00DDD2F2 /* main.m */; };
 		B166BC661D9BC88C00DDD2F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B166BC651D9BC88C00DDD2F2 /* Assets.xcassets */; };
 		B166BC691D9BC88C00DDD2F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B166BC671D9BC88C00DDD2F2 /* LaunchScreen.storyboard */; };
@@ -35,14 +36,14 @@
 		470C79091DB2620800DF5BEE /* CZJTestRunner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CZJTestRunner.h; sourceTree = "<group>"; };
 		470C790A1DB2620800DF5BEE /* CZJTestRunner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CZJTestRunner.m; sourceTree = "<group>"; };
 		47D9129B1DB5CB5400366357 /* Test-Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Test-Macros.h"; path = "Examples/Test-Macros.h"; sourceTree = "<group>"; };
-		47D9129C1DB5CB5400366357 /* TestCase1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestCase1.m; path = Examples/TestCase1.m; sourceTree = "<group>"; };
-		47D9129D1DB5CB5400366357 /* TestCase2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestCase2.m; path = Examples/TestCase2.m; sourceTree = "<group>"; };
 		47D912A01DB5FD9700366357 /* libksygpulive.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = libksygpulive.framework; path = "../../../Library/Developer/Xcode/DerivedData/CZJUnit-ekpgmwrinutpxvfdfbnuhswtarta/Build/Products/Debug-iphoneos/libksygpulive.framework"; sourceTree = "<group>"; };
 		47D912D61DB9AD9100366357 /* GHTestMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GHTestMacros.h; sourceTree = "<group>"; };
 		47D912D71DB9AE8900366357 /* NSException+GHTestFailureExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSException+GHTestFailureExceptions.h"; sourceTree = "<group>"; };
 		47D912D81DB9AE8900366357 /* NSException+GHTestFailureExceptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSException+GHTestFailureExceptions.m"; sourceTree = "<group>"; };
 		47D912D91DB9AE8900366357 /* NSValue+GHValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+GHValueFormatter.h"; sourceTree = "<group>"; };
 		47D912DA1DB9AE8900366357 /* NSValue+GHValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+GHValueFormatter.m"; sourceTree = "<group>"; };
+		47D912DD1DBA053200366357 /* TestLive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestLive.m; path = Examples/TestLive.m; sourceTree = "<group>"; };
+		47D912DE1DBA053200366357 /* TestPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestPlayer.m; path = Examples/TestPlayer.m; sourceTree = "<group>"; };
 		9F25E718A3726365DE443E33 /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
 		AAA80A503A7D692DE89A4ED3 /* Pods-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Example/Pods-Example.debug.xcconfig"; sourceTree = "<group>"; };
 		B166BC561D9BC88C00DDD2F2 /* CZJUnit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CZJUnit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13AA613D525C88084A354659 /* Pods_CZJUnit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,9 +100,9 @@
 		47D912901DB37D3C00366357 /* Examples */ = {
 			isa = PBXGroup;
 			children = (
+				47D912DE1DBA053200366357 /* TestPlayer.m */,
+				47D912DD1DBA053200366357 /* TestLive.m */,
 				47D9129B1DB5CB5400366357 /* Test-Macros.h */,
-				47D9129C1DB5CB5400366357 /* TestCase1.m */,
-				47D9129D1DB5CB5400366357 /* TestCase2.m */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
@@ -207,9 +209,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B166BC6D1D9BC88C00DDD2F2 /* Build configuration list for PBXNativeTarget "CZJUnit" */;
 			buildPhases = (
+				3F30B03028B601A92D7C09CA /* Check Pods Manifest.lock */,
 				B166BC521D9BC88C00DDD2F2 /* Sources */,
 				B166BC531D9BC88C00DDD2F2 /* Frameworks */,
 				B166BC541D9BC88C00DDD2F2 /* Resources */,
+				FA26495B10B1D04FAD05B6AC /* Embed Pods Frameworks */,
+				09EBAB61D6DDA51F1136E134 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -266,16 +271,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		09EBAB61D6DDA51F1136E134 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CZJUnit/Pods-CZJUnit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F30B03028B601A92D7C09CA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FA26495B10B1D04FAD05B6AC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CZJUnit/Pods-CZJUnit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B166BC521D9BC88C00DDD2F2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47D9129F1DB5CB5400366357 /* TestCase2.m in Sources */,
 				B166BC881D9BC8CA00DDD2F2 /* CZJTestViewController.m in Sources */,
 				B166BC821D9BC8CA00DDD2F2 /* CZJTestAppDelegate.m in Sources */,
 				B166BC871D9BC8CA00DDD2F2 /* CZJTestMainViewController.m in Sources */,
-				47D9129E1DB5CB5400366357 /* TestCase1.m in Sources */,
 				B166BC861D9BC8CA00DDD2F2 /* CZJTestMainView.m in Sources */,
 				B1A041B41DA5598700BECAC6 /* CZJTestSuite.m in Sources */,
 				B166BC831D9BC8CA00DDD2F2 /* CZJTestCase.m in Sources */,
@@ -287,7 +338,9 @@
 				B166BC5B1D9BC88C00DDD2F2 /* main.m in Sources */,
 				47D912DC1DB9AE8900366357 /* NSValue+GHValueFormatter.m in Sources */,
 				B171C3B91D9D1F2300C3F656 /* CZJTestGroup.m in Sources */,
+				47D912E01DBA053200366357 /* TestPlayer.m in Sources */,
 				470C790B1DB2620800DF5BEE /* CZJTestRunner.m in Sources */,
+				47D912DF1DBA053200366357 /* TestLive.m in Sources */,
 				B166BC811D9BC8CA00DDD2F2 /* CZJTest.m in Sources */,
 				B1B0A9121D9CF86E00B5BA81 /* CZJTestNode.m in Sources */,
 			);
@@ -399,6 +452,7 @@
 		};
 		B166BC6E1D9BC88C00DDD2F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF6029C5A8F2021990258CC8 /* Pods-CZJUnit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -412,6 +466,7 @@
 		};
 		B166BC6F1D9BC88C00DDD2F2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6BEE4CFBED0684A269C46B6 /* Pods-CZJUnit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
