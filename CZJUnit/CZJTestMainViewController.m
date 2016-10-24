@@ -32,6 +32,7 @@
     self = [super init];
     if (self) {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(runningStateChanged) name:CZJUnitTestRunnerRunningStateChanged object:[CZJTestRunner sharedRunner]];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationChanged) name:UIApplicationDidChangeStatusBarOrientationNotification object:nil];
     }
     return self;
 }
@@ -164,6 +165,10 @@
     NSString *ctrlString = [CZJTestRunner sharedRunner].isRunning ? @"Cancel" : @"Run";
     _testCtrlButton.title = ctrlString;
     [_mainView.tableView reloadData];
+}
+
+- (void)orientationChanged {
+    _mainView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
 }
 
 @end

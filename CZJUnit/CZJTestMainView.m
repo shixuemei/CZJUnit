@@ -77,4 +77,30 @@ const CGFloat kSearchBarHeight = 40.f;
     }
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    CGRect frame = self.frame;
+    
+    CGFloat originY = [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait ? 64.f : 32.f;
+    
+    CGRect segFrame = CGRectMake(frame.origin.x + kHorizenSpacing,
+                                 frame.origin.y + frame.size.height - kVerticalSpacing - kSegmentedControlHeight,
+                                 MAINSCREEN_WIDTH - 2 * kHorizenSpacing,
+                                 kSegmentedControlHeight);
+    _segmentedControl.frame = segFrame;
+    
+    CGRect searchBarFrame = CGRectMake(frame.origin.x,
+                                       frame.origin.y + originY,
+                                       MAINSCREEN_WIDTH,
+                                       kSearchBarHeight);
+    _searchBar.frame = searchBarFrame;
+    
+    CGRect tableFrame = CGRectMake(frame.origin.x,
+                                   searchBarFrame.origin.y + kSearchBarHeight,
+                                   MAINSCREEN_WIDTH,
+                                   segFrame.origin.y - kVerticalSpacing - searchBarFrame.origin.y - searchBarFrame.size.height);
+    _tableView.frame = tableFrame;
+}
+
 @end
