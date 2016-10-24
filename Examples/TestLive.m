@@ -15,7 +15,9 @@
 
 @interface TestLive : CZJTestCase {
     KSYGPUStreamerKit *_kit;
+    KSYMoviePlayerController *_player;
     NSURL *_hostURL;
+    NSURL *_playURL;
 }
 
 @end
@@ -34,6 +36,7 @@
     _kit.cameraPosition = AVCaptureDevicePositionBack;
     _kit.gpuOutputPixelFormat = kCVPixelFormatType_32BGRA;
     _kit.videoProcessingCallback = ^(CMSampleBufferRef buf) { };
+    
     _kit.gpuToStr.bCustomOutputSize = YES;
     
     _kit.streamerBase.videoCodec = KSYVideoCodec_AUTO;
@@ -50,6 +53,8 @@
     NSString *streamSrv  = @"rtmp://test.uplive.ksyun.com/live";
     NSString *streamUrl      = [ NSString stringWithFormat:@"%@/%@", streamSrv, devCode];
     _hostURL = [NSURL URLWithString:streamUrl];
+    
+    _playURL = [NSURL URLWithString:[NSString stringWithFormat:@"rtmp://test.live.ks-cdn.com/live/%@", devCode]];
 }
 
 - (void)tearDown {
@@ -57,6 +62,9 @@
     [_kit.streamerBase stopStream];
     [_kit stopPreview];
     _kit = nil;
+    
+    [_player stop];
+    _player = nil;
 }
 
 - (void)testPushStreamInLandscape {
@@ -68,16 +76,25 @@
     
     UIViewController *vc = CZJCurrentDisplayingViewController();
     
-    _kit.videoOrientation = UIInterfaceOrientationLandscapeLeft;
+    _kit.videoOrientation = [UIApplication sharedApplication].statusBarOrientation;
     [_kit startPreview:vc.view];
-
+    [_kit.streamerBase startStream:_hostURL];
     
     sleep(5);
+    _player = [[KSYMoviePlayerController alloc] initWithContentURL:_playURL];
     
+    _player.shouldEnableVideoPostProcessing = TRUE;
     
-    [[UIDevice currentDevice] performSelectorOnMainThread:@selector(setOrientation:)
-                                               withObject:@(UIDeviceOrientationPortrait)
-                                            waitUntilDone:YES];
+    _player.shouldAutoplay = YES;
+    _player.shouldEnableKSYStatModule = YES;
+    _player.shouldLoop = NO;
+    _player.videoDecoderMode = MPMovieVideoDecoderMode_Hardware;
+    [_player setTimeout:10 readTimeout:60];
+    [_player prepareToPlay];
+    sleep(5);
+    
+    GHAssertEquals(_player.naturalSize.width, _kit.streamDimension.width, nil);
+    GHAssertEquals(_player.naturalSize.height, _kit.streamDimension.height, nil);
 }
 
 @end
