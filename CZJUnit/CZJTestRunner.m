@@ -16,6 +16,8 @@ NSString * const CZJUnitTestRunnerRunningStateChanged = @"CZJUnitTestRunnerRunni
 
 @property (nonatomic, assign, getter=isRunning) BOOL running;
 
+@property (nonatomic, copy) NSMutableDictionary *log;
+
 @end
 
 @implementation CZJTestRunner {
@@ -43,6 +45,8 @@ static CZJTestRunner *_sharedRunner = nil;
                      forKeyPath:@"operationCount"
                         options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
                         context:nil];
+        
+        _log = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -66,6 +70,8 @@ static CZJTestRunner *_sharedRunner = nil;
 - (void)runTest:(id<CZJTest>)test
     withOptions:(CZJTestOptions)options
     inDisplayer:(id<CZJTestDisplayDelegate>)displayer {
+    [_log removeAllObjects];
+    
     _testQueue.suspended = YES;
     
     [self addTest:test withOptions:options inDisplayer:displayer];
@@ -113,6 +119,17 @@ static CZJTestRunner *_sharedRunner = nil;
             [exception reason]];
 }
 
+- (NSString *)testLog {
+    NSMutableString *logs = [NSMutableString string];
+    
+    for (NSString *testIdentifier in _log) {
+        NSString *log = _log[testIdentifier];
+        [logs appendString:[NSString stringWithFormat:@"%@\n%@", testIdentifier, log]];
+    }
+    
+    return logs;
+}
+
 #pragma mark - Private methods
 
 - (void)addTest:(id<CZJTest>)test
@@ -141,8 +158,10 @@ static CZJTestRunner *_sharedRunner = nil;
             if (!passed) {
                 [aTest.log addObject:exception];
                 aTest.status = CZJTestStatusErrored;
+                _log[aTest.identifier] = [CZJTestRunner descriptionForException:exception];
             } else {
                 aTest.status = CZJTestStatusSucceeded;
+                _log[aTest.identifier] = @"Passed\n\n";
             }
 
             if (displayer) {

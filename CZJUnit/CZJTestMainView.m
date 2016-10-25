@@ -21,6 +21,7 @@ const CGFloat kSearchBarHeight = 40.f;
 @property (nonatomic, strong) UITableView *         tableView;
 @property (nonatomic, strong) UISegmentedControl *  segmentedControl;
 @property (nonatomic, strong) UISearchBar *         searchBar;
+@property (nonatomic, strong) UITextView *          logView;
 
 @end
 
@@ -32,27 +33,18 @@ const CGFloat kSearchBarHeight = 40.f;
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
         
-        CGRect segFrame = CGRectMake(frame.origin.x + kHorizenSpacing,
-                                     frame.origin.y + frame.size.height - kVerticalSpacing - kSegmentedControlHeight,
-                                     MAINSCREEN_WIDTH - 2 * kHorizenSpacing,
-                                     kSegmentedControlHeight);
+        _logView = [[UITextView alloc] init];
+        _logView.editable = NO;
+        [self addSubview:_logView];
+        
         _segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"All", @"Failed"]];
-        _segmentedControl.frame = segFrame;
         _segmentedControl.selectedSegmentIndex = 0;
         [self addSubview:_segmentedControl];
-        
-        CGRect searchBarFrame = CGRectMake(frame.origin.x,
-                                           frame.origin.y + 64,
-                                           MAINSCREEN_WIDTH,
-                                           kSearchBarHeight);
-        _searchBar = [[UISearchBar alloc] initWithFrame:searchBarFrame];
+
+        _searchBar = [[UISearchBar alloc] init];
         [self addSubview:_searchBar];
-        
-        CGRect tableFrame = CGRectMake(frame.origin.x,
-                                       searchBarFrame.origin.y + kSearchBarHeight,
-                                       MAINSCREEN_WIDTH,
-                                       segFrame.origin.y - kVerticalSpacing - searchBarFrame.origin.y - searchBarFrame.size.height);
-        _tableView = [[UITableView alloc] initWithFrame:tableFrame];
+
+        _tableView = [[UITableView alloc] init];
         [self addSubview:_tableView];
         
         [_segmentedControl addObserver:self
@@ -101,6 +93,17 @@ const CGFloat kSearchBarHeight = 40.f;
                                    MAINSCREEN_WIDTH,
                                    segFrame.origin.y - kVerticalSpacing - searchBarFrame.origin.y - searchBarFrame.size.height);
     _tableView.frame = tableFrame;
+    
+    _logView.frame = CGRectMake(0, originY, MAINSCREEN_WIDTH, MAINSCREEN_HEIGHT - originY);
+}
+
+- (void)showLogViewWithContent:(NSString *)content {
+    _logView.text = content;
+    [self bringSubviewToFront:_logView];
+}
+
+- (void)closeLogView {
+    [self sendSubviewToBack:_logView];
 }
 
 @end

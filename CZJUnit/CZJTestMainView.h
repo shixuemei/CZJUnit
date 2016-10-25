@@ -14,4 +14,8 @@
 @property (nonatomic, strong, readonly) UISearchBar *searchBar;
 @property (nonatomic, strong, readonly) UISegmentedControl *segmentedControl;
 
+- (void)showLogViewWithContent:(NSString *)content;
+
+- (void)closeLogView;
+
 @end

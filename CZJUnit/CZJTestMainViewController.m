@@ -18,7 +18,10 @@
 @interface CZJTestMainViewController () <UITableViewDelegate, UISearchBarDelegate, CZJTestDisplayDelegate> {
     UIBarButtonItem *_testCtrlButton;
     UIBarButtonItem *_testMarkButton;
+    UIBarButtonItem *_testLogButton;
     CZJTestMainView *_mainView;
+    
+    BOOL _shouldShowLog;
 }
 
 @property (nonatomic, strong) CZJTestTableViewDataSource *dataSource;
@@ -55,8 +58,11 @@
     
     _testCtrlButton = [[UIBarButtonItem alloc] initWithTitle:@"Run" style:UIBarButtonItemStylePlain target:self action:@selector(toggleCtrlButton)];
     _testMarkButton = [[UIBarButtonItem alloc] initWithTitle:@"Mark" style:UIBarButtonItemStylePlain target:self action:@selector(toggleMarkButton)];
+    _testLogButton = [[UIBarButtonItem alloc] initWithTitle:@"Log" style:UIBarButtonItemStylePlain target:self action:@selector(toggleTestLogButton)];
     self.navigationItem.leftBarButtonItem = _testMarkButton;
-    self.navigationItem.rightBarButtonItem = _testCtrlButton;
+    self.navigationItem.rightBarButtonItems = @[_testCtrlButton, _testLogButton];
+    
+    _shouldShowLog = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -155,6 +161,16 @@
 - (void)toggleMarkButton {
     _mainView.tableView.editing = !_mainView.tableView.isEditing;
     _testMarkButton.title = _mainView.tableView.isEditing ? @"Done" : @"Mark";
+}
+
+- (void)toggleTestLogButton {
+    if (_shouldShowLog) {
+        [_mainView showLogViewWithContent:[[CZJTestRunner sharedRunner] testLog]];
+    } else {
+        [_mainView closeLogView];
+    }
+    
+    _shouldShowLog = !_shouldShowLog;
 }
 
 - (void)runningStateChanged {
